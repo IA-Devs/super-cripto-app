@@ -1,0 +1,14 @@
+{
+
+
+    "home_title": "Welcome to the SuperCripto App!",
+    "home_body_label": "Start buying cripto!",
+
+    "@home_title": {
+        "description": "Home screen messages"
+    },
+
+    "@home_body_label": {
+        "description": "Body message of the page"
+    }
+}
