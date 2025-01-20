@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "101272725818",
+    "project_id": "flutter-playground-6867f",
+    "storage_bucket": "flutter-playground-6867f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101272725818:android:1b92c5784ce2af71258803",
+        "android_client_info": {
+          "package_name": "com.iadevs.my_flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAehWAxq5QPFAvBkXmeNSMSynJg4SM6Jws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101272725818:android:551c9ebfc4bf5dcf258803",
+        "android_client_info": {
+          "package_name": "com.iadevs.super_cripto_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAehWAxq5QPFAvBkXmeNSMSynJg4SM6Jws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

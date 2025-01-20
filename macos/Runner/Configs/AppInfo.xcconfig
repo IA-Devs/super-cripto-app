@@ -8,7 +8,7 @@
 PRODUCT_NAME = super_cripto_app
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.iadevs.superCriptoApp
+PRODUCT_BUNDLE_IDENTIFIER = com.iadevs.superCriptoAppV2
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2025 com.iadevs. All rights reserved.
