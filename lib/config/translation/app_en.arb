@@ -4,11 +4,55 @@
     "home_title": "Welcome to the SuperCripto App!",
     "home_body_label": "Start buying cripto!",
 
+    "account_summary_balance": "Balance",
+    "account_summary_deposit": "Deposit",
+    "account_summary_exchange": "Exchange",
+    "account_summary_send": "Send",
+    "account_summary_earn": "Earn",
+
+    "account_last_transactions_title": "Transactions",
+
+    "account_last_transactions_item_title": "{selectPlaceholder, select, withdraw{Transfer}  deposit{Deposit} exchange{Exchange} invest{Invest} other{}}",
+
+    "account_last_transactions_item_status": "{selectPlaceholder, select, success{Sent} error{Cancelled/Anulled} pending{Pending} other{} }",
+
     "@home_title": {
         "description": "Home screen messages"
     },
 
     "@home_body_label": {
         "description": "Body message of the page"
+    },
+
+    "@account_summary_balance": {
+        "description": "User's account balance"
+    },
+
+    "@account_summary_deposit": {
+        "description": "Action to deposit money in user's account"
+    },
+
+    "@account_summary_exchange": {
+        "description": "Action to exchange crypto currencies"
+    },
+
+    "@account_summary_send": {
+        "description": "Action to send money"
+    },
+
+    "@account_summary_earn": {
+        "description": "Action to invest money"
+    },
+
+    "@account_last_transactions_title": {
+        "description":"Last transactions title"
+    },
+
+    "@account_last_transactions_item_title": {
+        "description":"Last transactions item title"
+    },
+
+    "@account_last_transactions_item_status": {
+        "description":"Last transactions item title"
     }
 }

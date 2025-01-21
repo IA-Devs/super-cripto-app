@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:super_cripto_app/config/constants/environment.dart';
+import 'package:super_cripto_app/domain/entities/account_info.dart';
+import 'package:super_cripto_app/presentation/widgets/home/account_last_transactions.dart';
+import 'package:super_cripto_app/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,22 +10,28 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.home_title),
-      ),
-      body: Center(
-        child: Text(AppLocalizations.of(context)!.home_body_label),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          var snackBar = SnackBar(
-            content: Text(Environment.coinMarketApiKey),
-          );
+      // appBar: AppBar(
+      //   title: Text(AppLocalizations.of(context)!.home_title),
+      // ),
+      body: _HomeView(),
+    );
+  }
+}
 
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        },
-        child: Icon(Icons.add),
-      ),
+class _HomeView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AccountSummary(
+          accountInfo: AccountInfo(balance: 5981),
+        ),
+        const SizedBox(
+          height: 40,
+        ),
+        const AccountLastTransactions()
+      ],
     );
   }
 }

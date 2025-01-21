@@ -26,7 +26,7 @@ class MainApp extends StatelessWidget {
       routerConfig: appRouter,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('es'),
+      locale: const Locale('en'),
     );
   }
 }

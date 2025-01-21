@@ -2,6 +2,16 @@
 
 
     "home_title": "Bienvenidos a la SuperCripto App!",
-    "home_body_label": "Comienza a comprar cripto!"
+    "home_body_label": "Comienza a comprar cripto!",
+
+    "account_summary_balance": "Disponible",
+    "account_summary_deposit": "Depositar",
+    "account_summary_exchange": "Intercambiar",
+    "account_summary_send": "Enviar",
+    "account_summary_earn": "Invertir",
+
+    "account_last_transactions_title": "Transacciones",
+    "account_last_transactions_item_title": "{selectPlaceholder, select, withdraw{Transferencia}  deposit{Ingreso} exchange{Intercambio} invest{Inversion} other{}}",
+    "account_last_transactions_item_status": "{selectPlaceholder, select, success{Enviado} error{Cancelado/Anulado} pending{Pendiente} other{} }"
 
 }
