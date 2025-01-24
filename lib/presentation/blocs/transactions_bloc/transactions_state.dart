@@ -27,7 +27,7 @@ class TransactionsErrorState extends TransactionsState {
 class TransactionsLoadedState extends TransactionsState {
   final int page;
   final bool hasReachedMax;
-  final List<Transaction> transactions;
+  final List<SuperCriptoTransaction> transactions;
 
   TransactionsLoadedState(
       {required this.hasReachedMax,
@@ -36,7 +36,9 @@ class TransactionsLoadedState extends TransactionsState {
       : super();
 
   TransactionsLoadedState copyWith(
-      {int? page, bool? hasReachedMax, List<Transaction>? transactions}) {
+      {int? page,
+      bool? hasReachedMax,
+      List<SuperCriptoTransaction>? transactions}) {
     return TransactionsLoadedState(
         hasReachedMax: hasReachedMax ?? this.hasReachedMax,
         transactions: transactions ?? this.transactions,
@@ -44,6 +46,5 @@ class TransactionsLoadedState extends TransactionsState {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [page, hasReachedMax, transactions];
 }

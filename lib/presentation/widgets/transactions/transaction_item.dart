@@ -11,7 +11,7 @@ class TransactionItem extends StatelessWidget {
     required this.transaction,
   });
 
-  final Transaction transaction;
+  final SuperCriptoTransaction transaction;
 
   get icon => getTransactionIcon(transaction);
 

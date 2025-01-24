@@ -32,4 +32,4 @@ void main() {
   });
 }
 
-List<Transaction> emptyTransactions = [];
+List<SuperCriptoTransaction> emptyTransactions = [];

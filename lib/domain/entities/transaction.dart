@@ -1,22 +1,23 @@
 import 'package:super_cripto_app/domain/entities/account.dart';
 
-class Transaction {
+class SuperCriptoTransaction {
   final String id;
   final Account origin;
   final Account destination;
   final double amount;
   final DateTime dueDate;
+  final DateTime createdAt;
   final TransactionStatus transactionStatus;
   final TransactionType transactionType;
 
-  Transaction(
-      {required this.id,
-      required this.origin,
+  SuperCriptoTransaction(this.id,
+      {required this.origin,
       required this.destination,
       required this.amount,
       required this.transactionStatus,
       required this.transactionType,
-      required this.dueDate});
+      required this.dueDate,
+      required this.createdAt});
 }
 
 enum TransactionStatus { pending, success, error }

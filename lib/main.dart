@@ -10,12 +10,11 @@ import 'firebase_options.dart';
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
-
-  await initInjections();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await initInjections();
+
   runApp(const MainApp());
 }
 

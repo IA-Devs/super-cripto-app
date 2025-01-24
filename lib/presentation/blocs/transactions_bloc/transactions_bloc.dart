@@ -32,8 +32,10 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
           GetTransactionsUseCaseParams(userId: event.userId, page: 0),
         );
 
+        final bool hasReachedMax = result.page == result.totalPages - 1;
+
         emit(TransactionsLoadedState(
-            transactions: result.items, hasReachedMax: false, page: 0));
+            transactions: result.items, hasReachedMax: hasReachedMax, page: 0));
         return;
       }
 
@@ -48,7 +50,9 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
 
         final result = await transactionsUseCase.call(
           GetTransactionsUseCaseParams(
-              userId: event.userId, page: currentState.page + 1),
+              userId: event.userId,
+              page: currentState.page + 1,
+              lastTransaction: event.lastTransaction),
         );
 
         final bool hasReachedMax = result.page == result.totalPages - 1;

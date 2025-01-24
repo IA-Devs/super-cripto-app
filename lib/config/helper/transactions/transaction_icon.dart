@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:super_cripto_app/domain/entities/transaction.dart';
 
-IconData getTransactionIcon(Transaction transaction) {
+IconData getTransactionIcon(SuperCriptoTransaction transaction) {
   switch (transaction.transactionType) {
     case TransactionType.deposit:
       return Icons.arrow_downward_outlined;

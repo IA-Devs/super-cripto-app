@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:super_cripto_app/config/utils/injections.dart';
-import 'package:super_cripto_app/domain/entities/account.dart';
 import 'package:super_cripto_app/domain/entities/transaction.dart';
 import 'package:super_cripto_app/domain/usecases/get_transactions_usecase.dart';
 import 'package:super_cripto_app/presentation/blocs/transactions_bloc/transactions_bloc.dart';
@@ -23,14 +22,17 @@ class AccountLastTransactions extends StatefulWidget {
 class _AccountLastTransactionsState extends State<AccountLastTransactions> {
   final TransactionsBloc _postBloc =
       TransactionsBloc(transactionsUseCase: sl<GetTransactionsUseCase>());
+
   final scrollController = ScrollController();
 
-  bool _onScrollEnd(ScrollEndNotification scrollEnd) {
+  bool _onScrollEnd(
+      ScrollEndNotification scrollEnd, SuperCriptoTransaction lastTransaction) {
     final metrics = scrollEnd.metrics;
     if (metrics.atEdge) {
       bool isTop = metrics.pixels == 0;
       if (!isTop) {
-        _postBloc.add(OnGettingTransactionsEvent(1234));
+        _postBloc.add(
+            OnGettingTransactionsEvent(1234, lastTransaction: lastTransaction));
       }
     }
     return true;
@@ -75,7 +77,10 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
                     SizedBox(
                       height: 450,
                       child: NotificationListener<ScrollEndNotification>(
-                          onNotification: _onScrollEnd,
+                          onNotification: (notification) {
+                            final lastTransaction = state.transactions.last;
+                            return _onScrollEnd(notification, lastTransaction);
+                          },
                           child: ListView.builder(
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             itemCount: state.hasReachedMax
