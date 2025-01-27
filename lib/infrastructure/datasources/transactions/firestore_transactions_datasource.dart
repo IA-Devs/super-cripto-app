@@ -9,6 +9,8 @@ import 'package:super_cripto_app/infrastructure/models/sct_transaction.dart';
 class FirestoreTransactionsDatasource extends TransactionsDatasource {
   final transactionsCollectionsRef =
       FirebaseFirestore.instance.collection('super_cripto_transactions');
+
+
   @override
   Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(int userId,
       {int page = 0,
@@ -16,18 +18,20 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
       SuperCriptoTransaction? lastTransaction}) async {
     try {
       final int count =
-          (await transactionsCollectionsRef.count().get()).count ?? 0;
+          (await transactionsCollectionsRef.where('sct_acc_id', isEqualTo: userId.toString()).count().get()).count ?? 0;
       final int totalPages = ((count + limit - 1) / limit).toInt();
 
       if (lastTransaction == null) {
         final snapshot = await transactionsCollectionsRef
+            .where('sct_acc_id', isEqualTo: userId.toString())
             .orderBy('sct_id', descending: true)
             .limit(limit)
             .get();
 
         final items = snapshot.docs
             .map(
-              (e) => TransactionsMapper.toSuperCriptoTransaction(SctTransaction.fromJson(e.data())),
+              (e) => TransactionsMapper.toSuperCriptoTransaction(
+                  SctTransaction.fromJson(e.data())),
             )
             .toList();
 
@@ -35,6 +39,7 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
       }
 
       final snapshot = await transactionsCollectionsRef
+          .where('sct_acc_id', isEqualTo: userId)
           .orderBy('sct_id', descending: true)
           .startAfter([lastTransaction.id])
           .limit(limit)
@@ -42,14 +47,8 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
 
       final items = snapshot.docs
           .map(
-            (e) => SuperCriptoTransaction('1200',
-                origin: Account(id: '1234'),
-                destination: Account(id: '4455'),
-                amount: 100.0,
-                transactionStatus: TransactionStatus.pending,
-                transactionType: TransactionType.deposit,
-                dueDate: DateTime.now(),
-                createdAt: DateTime.now()),
+            (e) => TransactionsMapper.toSuperCriptoTransaction(
+                SctTransaction.fromJson(e.data())),
           )
           .toList();
 

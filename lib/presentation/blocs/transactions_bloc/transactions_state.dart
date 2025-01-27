@@ -23,6 +23,11 @@ class TransactionsErrorState extends TransactionsState {
   List<Object?> get props => [errorMsg];
 }
 
+class TransactionsEmptyState extends TransactionsState {
+  @override
+  List<Object?> get props => [];
+}
+
 // Success Get Ny Times State
 class TransactionsLoadedState extends TransactionsState {
   final int page;

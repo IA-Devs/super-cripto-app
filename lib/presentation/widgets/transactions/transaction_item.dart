@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:money_formatter/money_formatter.dart';
+import 'package:super_cripto_app/config/constants/environment.dart';
 import 'package:super_cripto_app/config/helper/transactions/transaction_icon.dart';
 import 'package:super_cripto_app/domain/entities/transaction.dart';
 
@@ -15,7 +16,7 @@ class TransactionItem extends StatelessWidget {
 
   get icon => getTransactionIcon(transaction);
 
-  get dueDate => DateFormat.yMMMEd().format(transaction.dueDate);
+  get dueDate => DateFormat.yMMMEd(Environment.defaultLocale).format(transaction.dueDate);
 
   @override
   Widget build(BuildContext context) {

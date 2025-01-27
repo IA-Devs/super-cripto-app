@@ -15,6 +15,11 @@ class GetTransactionsUseCase extends UseCase<Pageable<SuperCriptoTransaction>,
     return transactionsRepository.fetchTransactionsByUserId(params.userId,
         page: params.page);
   }
+
+  @override
+  Stream<Pageable<SuperCriptoTransaction>> callAsStream(GetTransactionsUseCaseParams params) {
+    throw UnimplementedError();
+  }
 }
 
 class GetTransactionsUseCaseParams {

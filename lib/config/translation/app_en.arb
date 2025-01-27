@@ -10,11 +10,17 @@
     "account_summary_send": "Send",
     "account_summary_earn": "Earn",
 
+    "account_summary_error": "Sorry, we're having issues after loading your account information. Please try again later.",
+
     "account_last_transactions_title": "Transactions",
 
     "account_last_transactions_item_title": "{selectPlaceholder, select, withdraw{Transfer}  deposit{Deposit} exchange{Exchange} invest{Invest} other{}}",
 
     "account_last_transactions_item_status": "{selectPlaceholder, select, success{Sent} error{Cancelled/Anulled} pending{Pending} other{} }",
+
+    "account_last_transactions_empty": "It seems you don't made any transaction yet! What are you waiting for? Start buying!",
+
+    "account_last_transactions_error": "Sorry, we're having issues after loading your account information. Please try again later.",
 
     "@home_title": {
         "description": "Home screen messages"
@@ -44,6 +50,10 @@
         "description": "Action to invest money"
     },
 
+    "@account_summary_error": {
+        "description": "Error when loading accounts balance"
+    },
+
     "@account_last_transactions_title": {
         "description":"Last transactions title"
     },
@@ -54,5 +64,13 @@
 
     "@account_last_transactions_item_status": {
         "description":"Last transactions item title"
+    },
+
+    "@account_last_transactions_empty": {
+        "description": "Informative message when transactions list is empty"
+    },
+
+     "@account_last_transactions_error": {
+        "description": "Error when loading transactions list"
     }
 }

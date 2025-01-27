@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,15 +14,12 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
 
   TransactionsBloc({required this.transactionsUseCase})
       : super(TransactionsInitial()) {
-    on<OnGettingTransactionsEvent>(
-        (event, emit) => _onGettingTransactionsEvent(event, emit));
+    on<OnGettingTransactionsEvent>(_onGettingTransactionsEvent);
   }
 
-  _onGettingTransactionsEvent(
+  FutureOr<void> _onGettingTransactionsEvent(
       OnGettingTransactionsEvent event, Emitter<TransactionsState> emit) async {
     try {
-      //print(emitter);
-
       if (state is TransactionsLoadingState) {
         return;
       }
@@ -31,6 +30,11 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
         final result = await transactionsUseCase.call(
           GetTransactionsUseCaseParams(userId: event.userId, page: 0),
         );
+
+        if (result.items.isEmpty) {
+          emit(TransactionsEmptyState());
+          return;
+        }
 
         final bool hasReachedMax = result.page == result.totalPages - 1;
 
@@ -64,18 +68,8 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
             transactions: transactions));
         return;
       }
-    } catch (_) {
-      // yield PostError();
+    } catch (error) {
+      emit(TransactionsErrorState(error.toString()));
     }
-
-    // final result = await transactionsUseCase.call(
-    //   GetTransactionsUseCaseParams(userId: event.userId, page: event.page),
-    // );
-
-    // emit(TransactionsLoadedState(
-    //     transactions: result.items, hasReachedMax: false, page: 0));
   }
-
-  bool _hasReachedMax(TransactionsState state) =>
-      state is TransactionsLoadedState && state.hasReachedMax;
 }

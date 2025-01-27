@@ -9,10 +9,9 @@ class TransactionsMapper {
           origin: Account(id: sctTransaction.sctOrigin),
           destination: Account(id: sctTransaction.sctDestination),
           amount: sctTransaction.sctAmount,
-          transactionStatus: TransactionStatus.pending,
-          transactionType: TransactionType.withdraw,
-          // transactionStatus: sctTransaction.sctType,
-          // transactionType: transactionType,
+          transactionStatus: TransactionStatusValue.from(sctTransaction.sctStatus),
+          transactionType: TransactionTypeValue.from(sctTransaction.sctType),
           dueDate: sctTransaction.sctDueDate,
-          createdAt: sctTransaction.sctCreatedAt);
+          createdAt: sctTransaction.sctCreatedAt,
+          accountId: sctTransaction.sctAccId );
 }

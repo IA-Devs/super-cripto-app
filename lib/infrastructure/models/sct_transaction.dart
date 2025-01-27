@@ -9,6 +9,7 @@ class SctTransaction {
   final DateTime sctCreatedAt;
   final String sctType;
   final String sctStatus;
+  final String sctAccId;
 
   SctTransaction(
       {required this.sctId,
@@ -18,19 +19,20 @@ class SctTransaction {
       required this.sctDueDate,
       required this.sctOrigin,
       required this.sctStatus,
-      required this.sctType});
+      required this.sctType,
+      required this.sctAccId});
 
   factory SctTransaction.fromJson(Map<String, dynamic> json) {
-    print('fromJson');
     return SctTransaction(
         sctId: json['sct_id'],
         sctAmount: (json['sct_amount'] as int).toDouble(),
-        sctCreatedAt:(json['sct_created_at'] as Timestamp).toDate(),
+        sctCreatedAt: (json['sct_created_at'] as Timestamp).toDate(),
         sctDestination: json['sct_destination'],
         sctOrigin: json['sct_origin'],
         sctDueDate: (json['sct_due_date'] as Timestamp).toDate(),
         sctStatus: json['sct_status'],
-        sctType: json['sct_type']);
+        sctType: json['sct_type'],
+        sctAccId: json['sct_acc_id']);
   }
 
   // Map<String, dynamic> toJson() {

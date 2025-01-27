@@ -32,7 +32,7 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
       bool isTop = metrics.pixels == 0;
       if (!isTop) {
         _postBloc.add(
-            OnGettingTransactionsEvent(1234, lastTransaction: lastTransaction));
+            OnGettingTransactionsEvent(1, lastTransaction: lastTransaction));
       }
     }
     return true;
@@ -41,7 +41,7 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
   @override
   void initState() {
     super.initState();
-    _postBloc.add(OnGettingTransactionsEvent(1234));
+    _postBloc.add(OnGettingTransactionsEvent(1));
   }
 
   @override
@@ -73,6 +73,32 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (state is TransactionsLoadingState)
+                    const Center(
+                        child: Padding(
+                      padding: EdgeInsets.all(8),
+                      child: CircularProgressIndicator(),
+                    )),
+                  if (state is TransactionsEmptyState)
+                    Center(
+                        child: Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Text(
+                        localizations.account_last_transactions_empty,
+                        textAlign: TextAlign.center,
+                        style: textTheme.bodyLarge,
+                      ),
+                    )),
+                  if (state is TransactionsErrorState)
+                    Center(
+                        child: Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Text(
+                        localizations.account_last_transactions_error,
+                        textAlign: TextAlign.center,
+                        style: textTheme.bodyLarge,
+                      ),
+                    )),
                   if (state is TransactionsLoadedState)
                     SizedBox(
                       height: 450,
@@ -81,38 +107,45 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
                             final lastTransaction = state.transactions.last;
                             return _onScrollEnd(notification, lastTransaction);
                           },
-                          child: ListView.builder(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            itemCount: state.hasReachedMax
-                                ? state.transactions.length
-                                : state.transactions.length + 1,
-                            itemBuilder: (context, index) {
-                              if (index == state.transactions.length &&
-                                  !state.hasReachedMax) {
-                                return const Center(
-                                    child: Padding(
-                                  padding: EdgeInsets.all(8),
-                                  child: CircularProgressIndicator(),
-                                ));
-                              }
-
-                              final transaction = state.transactions[index];
-
-                              return TransactionItem(transaction: transaction);
-                            },
+                          child: _TransactionsListView(
+                            state: state,
                           )),
                     ),
-                  if (state is TransactionsLoadingState)
-                    const Center(
-                        child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: CircularProgressIndicator(),
-                    ))
                 ],
               ),
             ],
           ),
         );
+      },
+    );
+  }
+}
+
+class _TransactionsListView extends StatelessWidget {
+  final TransactionsLoadedState state;
+  const _TransactionsListView({
+    required this.state,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      itemCount: state.hasReachedMax
+          ? state.transactions.length
+          : state.transactions.length + 1,
+      itemBuilder: (context, index) {
+        if (index == state.transactions.length && !state.hasReachedMax) {
+          return const Center(
+              child: Padding(
+            padding: EdgeInsets.all(8),
+            child: CircularProgressIndicator(),
+          ));
+        }
+
+        final transaction = state.transactions[index];
+
+        return TransactionItem(transaction: transaction);
       },
     );
   }
