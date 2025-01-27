@@ -4,11 +4,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:super_cripto_app/config/router/app_router.dart';
 import 'package:super_cripto_app/config/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:super_cripto_app/config/utils/injections.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initInjections();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,7 +30,7 @@ class MainApp extends StatelessWidget {
       routerConfig: appRouter,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('en'),
+      locale: const Locale('es'),
     );
   }
 }

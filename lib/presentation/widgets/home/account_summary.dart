@@ -74,9 +74,9 @@ class AccountSummary extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
                         ),
-                        child: const Icon(Icons.currency_exchange_outlined),
+                        child: const Icon(Icons.arrow_outward_outlined),
                       ),
-                      Text(localizations.account_summary_exchange, style: const TextStyle(color: Colors.white))
+                      Text(localizations.account_summary_send, style: const TextStyle(color: Colors.white))
                     ],
                   ),
                   Column(
@@ -88,11 +88,12 @@ class AccountSummary extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
                         ),
-                        child: const Icon(Icons.arrow_outward_outlined),
+                        child: const Icon(Icons.currency_exchange_outlined),
                       ),
-                      Text(localizations.account_summary_send, style: const TextStyle(color: Colors.white))
+                      Text(localizations.account_summary_exchange, style: const TextStyle(color: Colors.white))
                     ],
                   ),
+
                   Column(
                     children: [
                       ElevatedButton(
