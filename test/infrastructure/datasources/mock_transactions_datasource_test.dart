@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:super_cripto_app/domain/entities/transaction.dart';
-import 'package:super_cripto_app/infrastructure/datasources/mock_transactions_datasource.dart';
+import 'package:super_cripto_app/infrastructure/datasources/transactions/mock_transactions_datasource.dart';
 
 @GenerateMocks([MockTransactionsDatasource])
 void main() {
@@ -32,4 +32,4 @@ void main() {
   });
 }
 
-List<Transaction> emptyTransactions = [];
+List<SuperCriptoTransaction> emptyTransactions = [];

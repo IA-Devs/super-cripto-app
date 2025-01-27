@@ -9,8 +9,9 @@ class TransactionsRepositoryImpl extends TransactionsRepository {
   TransactionsRepositoryImpl({required this.datasource});
 
   @override
-  Future<Pageable<Transaction>> fetchTransactionsByUserId(int userId,
-      {int page = 0, int limit = 10}) {
-    return datasource.fetchTransactionsByUserId(userId, page: page, limit: limit);
+  Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(int userId,
+      {int page = 0, int limit = 10, SuperCriptoTransaction? lastTransaction}) {
+    return datasource.fetchTransactionsByUserId(userId,
+        page: page, limit: limit);
   }
 }

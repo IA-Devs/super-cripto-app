@@ -5,58 +5,68 @@ import 'package:super_cripto_app/domain/entities/transaction.dart';
 
 class MockTransactionsDatasource extends TransactionsDatasource {
   @override
-  Future<Pageable<Transaction>> fetchTransactionsByUserId(int userId,
-      {int page = 0, int limit = 10}) async {
-    await Future.delayed(const Duration(seconds: 3));
+  Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(int userId,
+      {int page = 0,
+      int limit = 10,
+      SuperCriptoTransaction? lastTransaction}) async {
+    await Future.delayed(const Duration(seconds: 1));
 
     return Pageable(items: [
-      Transaction(
-          id: '1200',
-          origin: Account(id: '1234'),
-          destination: Account(id: '4455'),
-          amount: 100.0,
-          transactionStatus: TransactionStatus.pending,
-          transactionType: TransactionType.deposit,
-          dueDate: DateTime.now()),
-      Transaction(
-          id: '1201',
+      SuperCriptoTransaction(
+        '1200',
+        origin: Account(id: '1234'),
+        destination: Account(id: '4455'),
+        amount: 100.0,
+        transactionStatus: TransactionStatus.pending,
+        transactionType: TransactionType.deposit,
+        dueDate: DateTime.now(),
+        createdAt: DateTime.now(),
+        accountId: '1',
+      ),
+      SuperCriptoTransaction('1201',
           origin: Account(id: '1234'),
           destination: Account(id: '4455'),
           amount: 1200.0,
           transactionStatus: TransactionStatus.success,
           transactionType: TransactionType.exchange,
+          createdAt: DateTime.now(),
+          accountId: '1',
           dueDate: DateTime.now()),
-      Transaction(
-          id: '1202',
+      SuperCriptoTransaction('1202',
           origin: Account(id: '1234'),
           destination: Account(id: '4455'),
           amount: 35.0,
           transactionStatus: TransactionStatus.success,
           transactionType: TransactionType.deposit,
+          createdAt: DateTime.now(),
+          accountId: '1',
           dueDate: DateTime.now()),
-      Transaction(
-          id: '1203',
+      SuperCriptoTransaction('1203',
           origin: Account(id: '1234'),
           destination: Account(id: '4455'),
           amount: 665.0,
           transactionStatus: TransactionStatus.success,
           transactionType: TransactionType.deposit,
+          createdAt: DateTime.now(),
+          accountId: '1',
           dueDate: DateTime.now()),
-      Transaction(
-          id: '1204',
+      SuperCriptoTransaction('1204',
           origin: Account(id: '1234'),
           destination: Account(id: '4455'),
           amount: 21.0,
           transactionStatus: TransactionStatus.success,
           transactionType: TransactionType.invest,
+          createdAt: DateTime.now(),
+          accountId: '1',
           dueDate: DateTime.now()),
-      Transaction(
-          id: '1205',
+      SuperCriptoTransaction('1205',
           origin: Account(id: '1234'),
           destination: Account(id: '4455'),
           amount: 7090.0,
           transactionStatus: TransactionStatus.error,
           transactionType: TransactionType.exchange,
+          createdAt: DateTime.now(),
+          accountId: '1',
           dueDate: DateTime.now())
     ], page: page, totalPages: 3);
   }

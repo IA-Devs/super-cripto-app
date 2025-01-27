@@ -10,8 +10,13 @@
     "account_summary_send": "Enviar",
     "account_summary_earn": "Invertir",
 
+    "account_summary_error": "Tenemos problemas para obtener la información.\n Intenta nuevamente más tarde.",
+
     "account_last_transactions_title": "Transacciones",
     "account_last_transactions_item_title": "{selectPlaceholder, select, withdraw{Transferencia}  deposit{Ingreso} exchange{Intercambio} invest{Inversion} other{}}",
-    "account_last_transactions_item_status": "{selectPlaceholder, select, success{Enviado} error{Cancelado/Anulado} pending{Pendiente} other{} }"
+    "account_last_transactions_item_status": "{selectPlaceholder, select, success{Enviado} error{Cancelado/Anulado} pending{Pendiente} other{} }",
+    "account_last_transactions_empty": "No tienes transacciones registradas! \n Comienza a operar en Super Cripto App!",
+
+    "account_last_transactions_error": "Tenemos problemas para obtener la información.\n Intenta nuevamente en unos instantes"
 
 }
