@@ -4,6 +4,9 @@ class AccountInfo {
   final String lastname;
   final String userId;
   final double balance;
+  final String accountNumber;
+  final String accountAlias;
+  final String bankName;
 
   AccountInfo({
     required this.balance,
@@ -11,5 +14,8 @@ class AccountInfo {
     required this.firstname,
     required this.lastname,
     required this.userId,
+    required this.accountNumber,
+    required this.accountAlias,
+    required this.bankName,
   });
 }

@@ -9,11 +9,11 @@ import 'package:super_cripto_app/config/utils/injections.dart';
 import 'package:super_cripto_app/domain/entities/account_info.dart';
 import 'package:super_cripto_app/domain/usecases/get_account_info_usecase.dart';
 import 'package:super_cripto_app/presentation/blocs/blocs.dart';
+import 'package:super_cripto_app/presentation/cubits/cubit/cubit/selected_account_cubit.dart';
 
 class AccountSummary extends StatefulWidget {
-  final AccountInfo accountInfo;
 
-  const AccountSummary({super.key, required this.accountInfo});
+  const AccountSummary({super.key});
 
   @override
   State<AccountSummary> createState() => _AccountSummaryState();
@@ -27,9 +27,16 @@ class _AccountSummaryState extends State<AccountSummary> {
 
   late final StreamSubscription<List<AccountInfo>>? streamSubscription;
 
-  void listenAccountsInfo() {
+  void selectAccount(BuildContext context, AccountInfo account) {
+    context.read<SelectedAccountCubit>().selectAccount(account);
+  }
+
+  void listenAccountsInfo(BuildContext context) {
     streamSubscription = _accountsBloc.streamController.stream.listen((event) {
       accounts = event;
+      if(accounts.isNotEmpty && context.mounted) {
+        selectAccount(context, accounts[0]);
+      }
       setState(() {});
     });
   }
@@ -37,7 +44,7 @@ class _AccountSummaryState extends State<AccountSummary> {
   @override
   void initState() {
     super.initState();
-    listenAccountsInfo();
+    listenAccountsInfo(context);
     _accountsBloc.add(const OnFetchAccounts(userId: '1'));
   }
 

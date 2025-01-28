@@ -15,7 +15,7 @@ import 'package:super_cripto_app/infrastructure/repositories/transactions_reposi
 final sl = GetIt.instance;
 
 Future<void> initInjections() async {
-  await initFirestoreTransactionsInjections();
+  await initMockTransactionsInjections();
 }
 
 initMockTransactionsInjections() {
