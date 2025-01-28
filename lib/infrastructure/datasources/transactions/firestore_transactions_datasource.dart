@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:super_cripto_app/config/utils/pageable.dart';
 import 'package:super_cripto_app/domain/datasources/transactions_datasource.dart';
-import 'package:super_cripto_app/domain/entities/account.dart';
 import 'package:super_cripto_app/domain/entities/transaction.dart';
 import 'package:super_cripto_app/infrastructure/mappers/transactions_mapper.dart';
 import 'package:super_cripto_app/infrastructure/models/sct_transaction.dart';

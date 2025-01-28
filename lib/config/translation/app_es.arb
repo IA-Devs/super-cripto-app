@@ -17,6 +17,8 @@
     "account_last_transactions_item_status": "{selectPlaceholder, select, success{Enviado} error{Cancelado/Anulado} pending{Pendiente} other{} }",
     "account_last_transactions_empty": "No tienes transacciones registradas! \n Comienza a operar en Super Cripto App!",
 
-    "account_last_transactions_error": "Tenemos problemas para obtener la información.\n Intenta nuevamente en unos instantes"
+    "account_last_transactions_error": "Tenemos problemas para obtener la información.\n Intenta nuevamente en unos instantes",
+
+    "deposit_title": "Nuevo deposito"
 
 }

@@ -7,5 +7,9 @@ class AccountsMapper {
       id: scAccount.scAccId,
       firstname: scAccount.scAccFirstName,
       lastname: scAccount.scAccLastName,
-      userId: scAccount.scAccId);
+      userId: scAccount.scAccId,
+      accountAlias: '', //TODO agregar dato de firestore
+      accountNumber: '', //TODO agregar dato de firestore
+      bankName: '' //TODO agregar dato de firestore
+    );
 }
