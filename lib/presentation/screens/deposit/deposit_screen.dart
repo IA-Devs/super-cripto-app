@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:super_cripto_app/presentation/cubits/cubit/cubit/selected_account_cubit.dart';
+import 'package:super_cripto_app/presentation/cubits/selected_account_cubit/selected_account_cubit.dart';
 import 'package:super_cripto_app/presentation/shared/widgets/shared_text_field.dart';
 
 class DepositScreen extends StatelessWidget {

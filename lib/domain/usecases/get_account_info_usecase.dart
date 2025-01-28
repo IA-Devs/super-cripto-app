@@ -10,7 +10,6 @@ class GetAccountInfoUseCase
 
   @override
   Future<List<AccountInfo>> call(GetAccountInfoUseCaseParams params) {
-    // TODO: implement call
     throw UnimplementedError();
   }
 

@@ -9,7 +9,7 @@ import 'package:super_cripto_app/config/utils/injections.dart';
 import 'package:super_cripto_app/domain/entities/account_info.dart';
 import 'package:super_cripto_app/domain/usecases/get_account_info_usecase.dart';
 import 'package:super_cripto_app/presentation/blocs/blocs.dart';
-import 'package:super_cripto_app/presentation/cubits/cubit/cubit/selected_account_cubit.dart';
+import 'package:super_cripto_app/presentation/cubits/selected_account_cubit/selected_account_cubit.dart';
 
 class AccountSummary extends StatefulWidget {
 
