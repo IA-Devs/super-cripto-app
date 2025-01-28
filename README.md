@@ -17,3 +17,7 @@ App builded as a showcase of my skills in Flutter technologies.
 * Sidebar menu.
 * Charts screen.
 * Details screen.
+
+## Open source code included
+
+* [Numeric key](https://github.com/davidnwaneri/custom_numeric_keypad)
