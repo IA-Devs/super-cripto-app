@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:super_cripto_app/config/utils/injections.dart';
+import 'package:super_cripto_app/domain/usecases/withdraw_usecase.dart';
 import 'package:super_cripto_app/presentation/cubits/transfer_form/transfer_form_cubit.dart';
 import 'package:super_cripto_app/presentation/views/transfer/select_amount_view.dart';
 
@@ -19,7 +21,7 @@ class _TransferScreenState extends State<TransferScreen> {
         ),
         body: SafeArea(
           child: BlocProvider(
-            create: (context) => TransferFormCubit(),
+            create: (context) => TransferFormCubit(withdrawUseCase: sl<WithdrawUseCase>()),
             child: const SelectAmountView(),
           ),
         ));

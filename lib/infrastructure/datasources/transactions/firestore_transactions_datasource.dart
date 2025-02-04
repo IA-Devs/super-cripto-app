@@ -6,6 +6,7 @@ import 'package:super_cripto_app/infrastructure/mappers/transactions_mapper.dart
 import 'package:super_cripto_app/infrastructure/models/sct_transaction.dart';
 
 class FirestoreTransactionsDatasource extends TransactionsDatasource {
+  
   final transactionsCollectionsRef =
       FirebaseFirestore.instance.collection('super_cripto_transactions');
 
@@ -56,4 +57,14 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
       throw Exception('Error fetching transactions');
     }
   }
+
+  @override
+  Future<void> addTransaction(
+      {required String accountId,
+      required double amount,
+      required TransactionType transactionType,
+      required String origin,
+      required String destination}) async {
+
+      }
 }

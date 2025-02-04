@@ -5,6 +5,7 @@ import 'package:super_cripto_app/domain/repositories/accounts_repository.dart';
 import 'package:super_cripto_app/domain/repositories/transactions_repository.dart';
 import 'package:super_cripto_app/domain/usecases/get_account_info_usecase.dart';
 import 'package:super_cripto_app/domain/usecases/get_transactions_usecase.dart';
+import 'package:super_cripto_app/domain/usecases/withdraw_usecase.dart';
 import 'package:super_cripto_app/infrastructure/datasources/accounts/firestore_accounts_datasource.dart';
 import 'package:super_cripto_app/infrastructure/datasources/accounts/mock_accounts_datasource.dart';
 import 'package:super_cripto_app/infrastructure/datasources/transactions/firestore_transactions_datasource.dart';
@@ -15,10 +16,20 @@ import 'package:super_cripto_app/infrastructure/repositories/transactions_reposi
 final sl = GetIt.instance;
 
 Future<void> initInjections() async {
-  await initMockTransactionsInjections();
+  await _initMockTransactionsInjections();
 }
 
-initMockTransactionsInjections() {
+_initCommon() {
+  sl.registerSingleton<AccountsRepository>(
+      AccountsRepositoryImpl(accountsDatasource: sl<AccountsDatasource>()));
+  sl.registerSingleton<GetAccountInfoUseCase>(
+      GetAccountInfoUseCase(accountsRepository: sl<AccountsRepository>()));
+
+  sl.registerSingleton<WithdrawUseCase>(
+      WithdrawUseCase(transactionsRepository: sl<TransactionsRepository>()));
+}
+
+_initMockTransactionsInjections() {
   sl.registerSingleton<TransactionsDatasource>(MockTransactionsDatasource());
   sl.registerSingleton<TransactionsRepository>(
       TransactionsRepositoryImpl(datasource: sl<TransactionsDatasource>()));
@@ -26,13 +37,11 @@ initMockTransactionsInjections() {
       transactionsRepository: sl<TransactionsRepository>()));
 
   sl.registerSingleton<AccountsDatasource>(MockAccountsDatasource());
-  sl.registerSingleton<AccountsRepository>(
-      AccountsRepositoryImpl(accountsDatasource: sl<AccountsDatasource>()));
-  sl.registerSingleton<GetAccountInfoUseCase>(
-      GetAccountInfoUseCase(accountsRepository: sl<AccountsRepository>()));
+
+  _initCommon();
 }
 
-initFirestoreTransactionsInjections() {
+_initFirestoreTransactionsInjections() {
   sl.registerSingleton<TransactionsDatasource>(
       FirestoreTransactionsDatasource());
   sl.registerSingleton<TransactionsRepository>(
@@ -41,8 +50,6 @@ initFirestoreTransactionsInjections() {
       transactionsRepository: sl<TransactionsRepository>()));
 
   sl.registerSingleton<AccountsDatasource>(FirestoreAccountsDatasource());
-  sl.registerSingleton<AccountsRepository>(
-      AccountsRepositoryImpl(accountsDatasource: sl<AccountsDatasource>()));
-  sl.registerSingleton<GetAccountInfoUseCase>(
-      GetAccountInfoUseCase(accountsRepository: sl<AccountsRepository>()));
+
+  _initCommon();
 }

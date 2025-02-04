@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -21,13 +23,9 @@ void main() {
         result = await mockTransactionsDatasource.fetchTransactionsByUserId(1,
             page: 0);
       } catch (e) {
-        print('fetchTransactionsByUserId error ${e.toString()}');
         result = e;
       }
       expect(result, emptyTransactions);
-      // Arrange
-      // Act
-      // Assert
     });
   });
 }

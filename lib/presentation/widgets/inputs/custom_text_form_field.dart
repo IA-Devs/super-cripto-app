@@ -43,7 +43,6 @@ class CustomTextFormField extends StatelessWidget {
         () {
           final value = controller!.value.text;
           onChanged?.call(value);
-          print('controller listener $value');
         },
       );
     }

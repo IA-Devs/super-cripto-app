@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:super_cripto_app/config/utils/pageable.dart';
 import 'package:super_cripto_app/domain/datasources/transactions_datasource.dart';
 import 'package:super_cripto_app/domain/entities/account.dart';
@@ -69,5 +70,16 @@ class MockTransactionsDatasource extends TransactionsDatasource {
           accountId: '1',
           dueDate: DateTime.now())
     ], page: page, totalPages: 3);
+  }
+
+  @override
+  Future<void> addTransaction(
+      {required String accountId,
+      required double amount,
+      required TransactionType transactionType,
+      required String origin,
+      required String destination}) async {
+    debugPrint(
+        'addTransaction datasource $accountId $amount $transactionType $origin $destination');
   }
 }

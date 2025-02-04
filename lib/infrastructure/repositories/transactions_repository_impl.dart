@@ -14,4 +14,19 @@ class TransactionsRepositoryImpl extends TransactionsRepository {
     return datasource.fetchTransactionsByUserId(userId,
         page: page, limit: limit);
   }
+
+  @override
+  Future<void> addTransaction(
+      {required String accountId,
+      required double amount,
+      required TransactionType transactionType,
+      required String origin,
+      required String destination}) {
+    return datasource.addTransaction(
+        accountId: accountId,
+        amount: amount,
+        transactionType: transactionType,
+        origin: origin,
+        destination: destination);
+  }
 }

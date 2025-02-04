@@ -4,4 +4,12 @@ import 'package:super_cripto_app/domain/entities/transaction.dart';
 abstract class TransactionsRepository {
   Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(int userId,
       {int page = 0, SuperCriptoTransaction? lastTransaction});
+
+  Future<void> addTransaction({
+    required String accountId,
+    required double amount,
+    required TransactionType transactionType,
+    required String origin,
+    required String destination,
+  });
 }
