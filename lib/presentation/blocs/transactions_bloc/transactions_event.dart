@@ -4,7 +4,7 @@ part of 'transactions_bloc.dart';
 sealed class TransactionsEvent {}
 
 class OnGettingTransactionsEvent extends TransactionsEvent {
-  final int userId;
+  final String userId;
   final int page;
   final bool withLoading;
   final SuperCriptoTransaction? lastTransaction;

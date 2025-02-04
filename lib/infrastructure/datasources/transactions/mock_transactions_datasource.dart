@@ -6,7 +6,7 @@ import 'package:super_cripto_app/domain/entities/transaction.dart';
 
 class MockTransactionsDatasource extends TransactionsDatasource {
   @override
-  Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(int userId,
+  Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(String userId,
       {int page = 0,
       int limit = 10,
       SuperCriptoTransaction? lastTransaction}) async {
@@ -79,6 +79,7 @@ class MockTransactionsDatasource extends TransactionsDatasource {
       required TransactionType transactionType,
       required String origin,
       required String destination}) async {
+    await Future.delayed(const Duration(milliseconds: 800));
     debugPrint(
         'addTransaction datasource $accountId $amount $transactionType $origin $destination');
   }

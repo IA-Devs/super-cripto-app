@@ -24,7 +24,7 @@ class GetTransactionsUseCase extends UseCase<Pageable<SuperCriptoTransaction>,
 
 class GetTransactionsUseCaseParams {
   int page;
-  int userId;
+  String userId;
   SuperCriptoTransaction? lastTransaction;
 
   GetTransactionsUseCaseParams(

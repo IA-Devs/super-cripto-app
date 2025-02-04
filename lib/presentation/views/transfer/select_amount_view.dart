@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_loading_overlay/flutter_loading_overlay.dart';
+import 'package:go_router/go_router.dart';
 import 'package:super_cripto_app/presentation/cubits/selected_account_cubit/selected_account_cubit.dart';
 //import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:super_cripto_app/presentation/cubits/transfer_form/transfer_form_cubit.dart';
@@ -104,11 +106,16 @@ class _SelectAmountViewState extends State<SelectAmountView> {
           ),
           FilledButton(
             onPressed: () async {
+              //  if (!transferCubit.state.isValid) return;
+
+              startLoading;
               await transferCubit.onSubmit(
                   accountId: selectedAccountCubit.state.account.id,
                   amount: double.parse(amount.value),
                   destination: cbu.value,
                   origin: selectedAccountCubit.state.account.accountAlias);
+
+              if (context.mounted) context.go('/');
             },
             style: FilledButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50)),

@@ -32,7 +32,7 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
       bool isTop = metrics.pixels == 0;
       if (!isTop) {
         _postBloc.add(
-            OnGettingTransactionsEvent(1, lastTransaction: lastTransaction));
+            OnGettingTransactionsEvent('69573421-5951-490a-9acc-bec8f3bc9755', lastTransaction: lastTransaction));
       }
     }
     return true;
@@ -41,7 +41,7 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
   @override
   void initState() {
     super.initState();
-    _postBloc.add(OnGettingTransactionsEvent(1));
+    _postBloc.add(OnGettingTransactionsEvent('69573421-5951-490a-9acc-bec8f3bc9755'));
   }
 
   @override
