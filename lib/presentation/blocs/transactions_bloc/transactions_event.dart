@@ -12,3 +12,9 @@ class OnGettingTransactionsEvent extends TransactionsEvent {
   OnGettingTransactionsEvent(this.userId,
       {this.page = 0, this.withLoading = true, this.lastTransaction});
 }
+
+class OnRefreshTransactionsEvent extends TransactionsEvent {
+  final String userId;
+
+   OnRefreshTransactionsEvent(this.userId);
+}

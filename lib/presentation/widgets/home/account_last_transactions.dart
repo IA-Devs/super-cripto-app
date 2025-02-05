@@ -31,8 +31,9 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
     if (metrics.atEdge) {
       bool isTop = metrics.pixels == 0;
       if (!isTop) {
-        _postBloc.add(
-            OnGettingTransactionsEvent('69573421-5951-490a-9acc-bec8f3bc9755', lastTransaction: lastTransaction));
+        _postBloc.add(OnGettingTransactionsEvent(
+            '69573421-5951-490a-9acc-bec8f3bc9755',
+            lastTransaction: lastTransaction));
       }
     }
     return true;
@@ -41,13 +42,26 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
   @override
   void initState() {
     super.initState();
-    _postBloc.add(OnGettingTransactionsEvent('69573421-5951-490a-9acc-bec8f3bc9755'));
+    _postBloc.add(
+        OnGettingTransactionsEvent('69573421-5951-490a-9acc-bec8f3bc9755'));
   }
 
   @override
   void dispose() {
     scrollController.dispose();
     super.dispose();
+  }
+
+  Future<void> _handleRefresh() async {
+    // Simulate network fetch or database query
+    //await Future.delayed(Duration(seconds: 2));
+    // Update the list of items and refresh the UI
+    // setState(() {
+    //   items = List.generate(20, (index) => "Refreshed Item ${index + 1}");
+    // });
+
+    _postBloc.add(
+        OnRefreshTransactionsEvent('69573421-5951-490a-9acc-bec8f3bc9755'));
   }
 
   @override
@@ -60,60 +74,64 @@ class _AccountLastTransactionsState extends State<AccountLastTransactions> {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            spacing: 0.0,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                localizations!.account_last_transactions_title,
-                style: textTheme.headlineSmall,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (state is TransactionsLoadingState)
-                    const Center(
-                        child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: CircularProgressIndicator(),
-                    )),
-                  if (state is TransactionsEmptyState)
-                    Center(
-                        child: Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Text(
-                        localizations.account_last_transactions_empty,
-                        textAlign: TextAlign.center,
-                        style: textTheme.bodyLarge,
+          child: RefreshIndicator(
+            onRefresh: _handleRefresh,
+            child: Column(
+              spacing: 0.0,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  localizations!.account_last_transactions_title,
+                  style: textTheme.headlineSmall,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (state is TransactionsLoadingState)
+                      const Center(
+                          child: Padding(
+                        padding: EdgeInsets.all(8),
+                        child: CircularProgressIndicator(),
+                      )),
+                    if (state is TransactionsEmptyState)
+                      Center(
+                          child: Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: Text(
+                          localizations.account_last_transactions_empty,
+                          textAlign: TextAlign.center,
+                          style: textTheme.bodyLarge,
+                        ),
+                      )),
+                    if (state is TransactionsErrorState)
+                      Center(
+                          child: Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: Text(
+                          localizations.account_last_transactions_error,
+                          textAlign: TextAlign.center,
+                          style: textTheme.bodyLarge,
+                        ),
+                      )),
+                    if (state is TransactionsLoadedState)
+                      SizedBox(
+                        height: 450,
+                        child: NotificationListener<ScrollEndNotification>(
+                            onNotification: (notification) {
+                              final lastTransaction = state.transactions.last;
+                              return _onScrollEnd(
+                                  notification, lastTransaction);
+                            },
+                            child: _TransactionsListView(
+                              state: state,
+                            )),
                       ),
-                    )),
-                  if (state is TransactionsErrorState)
-                    Center(
-                        child: Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Text(
-                        localizations.account_last_transactions_error,
-                        textAlign: TextAlign.center,
-                        style: textTheme.bodyLarge,
-                      ),
-                    )),
-                  if (state is TransactionsLoadedState)
-                    SizedBox(
-                      height: 450,
-                      child: NotificationListener<ScrollEndNotification>(
-                          onNotification: (notification) {
-                            final lastTransaction = state.transactions.last;
-                            return _onScrollEnd(notification, lastTransaction);
-                          },
-                          child: _TransactionsListView(
-                            state: state,
-                          )),
-                    ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
