@@ -16,7 +16,7 @@ class TransactionItem extends StatelessWidget {
 
   get icon => getTransactionIcon(transaction);
 
-  get dueDate => DateFormat.yMMMEd(Environment.defaultLocale).format(transaction.dueDate);
+  get createdAt => DateFormat.yMMMEd(Environment.defaultLocale).format(transaction.createdAt);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class TransactionItem extends StatelessWidget {
                       style: textStyles.bodyLarge!
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
-                    Text(dueDate),
+                    Text(createdAt),
                     Text(
                       localizations.account_last_transactions_item_status(
                           transaction.transactionStatus.value),

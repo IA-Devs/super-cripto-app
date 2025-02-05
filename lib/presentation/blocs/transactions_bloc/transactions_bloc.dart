@@ -15,6 +15,38 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
   TransactionsBloc({required this.transactionsUseCase})
       : super(TransactionsInitial()) {
     on<OnGettingTransactionsEvent>(_onGettingTransactionsEvent);
+
+    on<OnRefreshTransactionsEvent>(_onRefreshTransactionsEvent);
+  }
+
+  FutureOr<void> _onRefreshTransactionsEvent(
+      OnRefreshTransactionsEvent event, Emitter<TransactionsState> emit) async {
+    try {
+
+
+      if (state is TransactionsLoadedState) {
+        final currentState = state as TransactionsLoadedState;
+
+        final int page = 0;
+
+        final result = await transactionsUseCase.call(
+          GetTransactionsUseCaseParams(
+              userId: event.userId,
+              page: page,),
+        );
+
+        final bool hasReachedMax = result.page == result.totalPages - 1;
+        final transactions = result.items;
+
+        emit(currentState.copyWith(
+            page: page,
+            hasReachedMax: hasReachedMax,
+            transactions: transactions));
+        return;
+      }
+    } catch (error) {
+      emit(TransactionsErrorState(error.toString()));
+    }
   }
 
   FutureOr<void> _onGettingTransactionsEvent(

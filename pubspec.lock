@@ -158,6 +158,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
+  currency_text_input_formatter:
+    dependency: "direct main"
+    description:
+      name: currency_text_input_formatter
+      sha256: "7ed954e38b0d89c068e29cbc7e9194cd5c36ec2940b8ef407c1425d8854ec45f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.8"
   dart_style:
     dependency: transitive
     description:
@@ -166,6 +174,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      sha256: "253a18bbd4851fecba42f7343a1df3a9a4c1d31a2c1b37e221086b4fa8c8dbc9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.8.0+1"
+  dio_web_adapter:
+    dependency: transitive
+    description:
+      name: dio_web_adapter
+      sha256: e485c7a39ff2b384fa1d7e09b4e25f755804de8384358049124830b04fc4f93a
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   equatable:
     dependency: "direct main"
     description:
@@ -251,6 +275,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+  flutter_loading_overlay:
+    dependency: "direct main"
+    description:
+      name: flutter_loading_overlay
+      sha256: "54a6bb944c9bd519c258566b759a0dce8c7c918d73af3aa083c3b9e3b962d9f4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -298,6 +330,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.6.3"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      sha256: "178d74305e7866013777bab2c3d8726205dc5a4dd935297175b19a23a2e66571"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.2"
   intl:
     dependency: "direct main"
     description:

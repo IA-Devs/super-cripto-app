@@ -19,6 +19,16 @@
 
     "account_last_transactions_error": "Tenemos problemas para obtener la información.\n Intenta nuevamente en unos instantes",
 
-    "deposit_title": "Nuevo deposito"
+    "deposit_title": "Nuevo deposito",
+
+    "select_amount_view_cbu_hint": "Ingrese CBU / Alias",
+
+    "select_amount_view_cbu_label": "CBU / Alias",
+
+    "select_amount_view_amount_hint": "Ingrese monto (USD)",
+
+    "select_amount_view_amount_label": "Monto (USD)",
+
+    "select_amount_view_submit_label": "Continuar"
 
 }

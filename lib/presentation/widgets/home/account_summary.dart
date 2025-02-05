@@ -45,7 +45,7 @@ class _AccountSummaryState extends State<AccountSummary> {
   void initState() {
     super.initState();
     listenAccountsInfo(context);
-    _accountsBloc.add(const OnFetchAccounts(userId: '1'));
+    _accountsBloc.add(const OnFetchAccounts(userId: '69573421-5951-490a-9acc-bec8f3bc9755'));
   }
 
   @override

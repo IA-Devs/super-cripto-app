@@ -5,7 +5,7 @@ class SuperCriptoTransaction {
   final Account origin;
   final Account destination;
   final double amount;
-  final DateTime dueDate;
+  final DateTime? dueDate;
   final DateTime createdAt;
   final TransactionStatus transactionStatus;
   final TransactionType transactionType;
@@ -18,7 +18,7 @@ class SuperCriptoTransaction {
     required this.amount,
     required this.transactionStatus,
     required this.transactionType,
-    required this.dueDate,
+    this.dueDate,
     required this.createdAt,
     required this.accountId,
   });

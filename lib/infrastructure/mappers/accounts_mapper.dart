@@ -8,8 +8,7 @@ class AccountsMapper {
       firstname: scAccount.scAccFirstName,
       lastname: scAccount.scAccLastName,
       userId: scAccount.scAccId,
-      accountAlias: '', //TODO agregar dato de firestore
-      accountNumber: '', //TODO agregar dato de firestore
-      bankName: '' //TODO agregar dato de firestore
-    );
+      accountAlias: scAccount.scAccAlias,
+      accountNumber: scAccount.scAccCvu,
+      bankName: scAccount.scAccBankName);
 }

@@ -17,5 +17,6 @@ class AccountInfo {
     required this.accountNumber,
     required this.accountAlias,
     required this.bankName,
-  });
+  })  : assert(accountAlias.isNotEmpty, 'The account should have alias'),
+        assert(accountNumber.isNotEmpty, 'The account should have number');
 }

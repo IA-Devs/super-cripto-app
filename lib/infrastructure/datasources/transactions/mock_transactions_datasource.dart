@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:super_cripto_app/config/utils/pageable.dart';
 import 'package:super_cripto_app/domain/datasources/transactions_datasource.dart';
 import 'package:super_cripto_app/domain/entities/account.dart';
@@ -5,7 +6,7 @@ import 'package:super_cripto_app/domain/entities/transaction.dart';
 
 class MockTransactionsDatasource extends TransactionsDatasource {
   @override
-  Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(int userId,
+  Future<Pageable<SuperCriptoTransaction>> fetchTransactionsByUserId(String userId,
       {int page = 0,
       int limit = 10,
       SuperCriptoTransaction? lastTransaction}) async {
@@ -69,5 +70,17 @@ class MockTransactionsDatasource extends TransactionsDatasource {
           accountId: '1',
           dueDate: DateTime.now())
     ], page: page, totalPages: 3);
+  }
+
+  @override
+  Future<void> addTransaction(
+      {required String accountId,
+      required double amount,
+      required TransactionType transactionType,
+      required String origin,
+      required String destination}) async {
+    await Future.delayed(const Duration(milliseconds: 800));
+    debugPrint(
+        'addTransaction datasource $accountId $amount $transactionType $origin $destination');
   }
 }

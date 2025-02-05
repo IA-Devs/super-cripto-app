@@ -1194,6 +1194,8 @@ PODS:
     - nanopb (~> 3.30910.0)
   - FirebaseSharedSwift (11.7.0)
   - Flutter (1.0.0)
+  - flutter_loading_overlay (0.0.1):
+    - Flutter
   - GoogleUtilities/Environment (8.0.2):
     - GoogleUtilities/Privacy
   - GoogleUtilities/Logger (8.0.2):
@@ -1305,6 +1307,7 @@ DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
+  - flutter_loading_overlay (from `.symlinks/plugins/flutter_loading_overlay/ios`)
   - root_tester (from `.symlinks/plugins/root_tester/ios`)
 
 SPEC REPOS:
@@ -1332,6 +1335,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
+  flutter_loading_overlay:
+    :path: ".symlinks/plugins/flutter_loading_overlay/ios"
   root_tester:
     :path: ".symlinks/plugins/root_tester/ios"
 
@@ -1349,6 +1354,7 @@ SPEC CHECKSUMS:
   FirebaseFirestoreInternal: db478fdaeb98fe8686ff49e600f3871c224a76ff
   FirebaseSharedSwift: a45efd84d60ebbfdcdbaebc66948af3630459e62
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_loading_overlay: b20ecb63e957bd4a9d7b9edd39794342ed538f48
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
   "gRPC-C++": 2fa52b3141e7789a28a737f251e0c45b4cb20a87
   gRPC-Core: a27c294d6149e1c39a7d173527119cfbc3375ce4
