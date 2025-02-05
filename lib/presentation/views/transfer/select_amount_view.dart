@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_loading_overlay/flutter_loading_overlay.dart';
 import 'package:go_router/go_router.dart';
 import 'package:super_cripto_app/presentation/cubits/selected_account_cubit/selected_account_cubit.dart';
-//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:super_cripto_app/presentation/cubits/transfer_form/transfer_form_cubit.dart';
 import 'package:super_cripto_app/presentation/widgets/widgets.dart';
 
@@ -49,7 +49,7 @@ class _SelectAmountViewState extends State<SelectAmountView> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    //final localizations = AppLocalizations.of(context)!;
+    final localizations = AppLocalizations.of(context)!;
 
     final selectedAccountCubit = context.watch<SelectedAccountCubit>();
 
@@ -75,8 +75,8 @@ class _SelectAmountViewState extends State<SelectAmountView> {
                 errorText: cbu.errorMessage,
                 filled: true,
                 fillColor: colors.surface,
-                hintText: 'Enter CBU / Alias', //TODO: internacionalizar texto
-                labelText: 'CBU / Alias', //TODO: internacionalizar texto
+                hintText: localizations.select_amount_view_amount_hint,
+                labelText: localizations.select_amount_view_amount_label,
                 floatingLabelBehavior: FloatingLabelBehavior.always),
           ),
           const SizedBox(
@@ -92,8 +92,8 @@ class _SelectAmountViewState extends State<SelectAmountView> {
                 errorText: amount.errorMessage,
                 filled: true,
                 fillColor: colors.surface,
-                hintText: 'Amount (USD)', //TODO: internacionalizar texto
-                labelText: 'Enter amount (USD)', //TODO: internacionalizar texto
+                hintText: localizations.select_amount_view_cbu_hint,
+                labelText: localizations.select_amount_view_cbu_label,
                 floatingLabelBehavior: FloatingLabelBehavior.always),
           ),
           Expanded(
@@ -105,21 +105,26 @@ class _SelectAmountViewState extends State<SelectAmountView> {
             ),
           ),
           FilledButton(
-            onPressed: () async {
-              //  if (!transferCubit.state.isValid) return;
+            onPressed: transferCubit.state.isValid
+                ? () async {
+                    //  if (!transferCubit.state.isValid) return;
 
-              startLoading;
-              await transferCubit.onSubmit(
-                  accountId: selectedAccountCubit.state.account!.id,
-                  amount: double.parse(amount.value),
-                  destination: cbu.value,
-                  origin: selectedAccountCubit.state.account!.accountAlias);
+                    startLoading;
+                    await transferCubit.onSubmit(
+                        accountId: selectedAccountCubit.state.account!.id,
+                        amount: double.parse(amount.value),
+                        destination: cbu.value,
+                        origin:
+                            selectedAccountCubit.state.account!.accountAlias);
 
-              if (context.mounted) context.go('/');
-            },
+                    if (context.mounted) context.go('/');
+                  }
+                : null,
             style: FilledButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50)),
-            child: const Text('Continue'), //TODO: internacionalizar texto
+            child: Text(
+              localizations.select_amount_view_submit_label,
+            ),
           ),
         ],
       ),

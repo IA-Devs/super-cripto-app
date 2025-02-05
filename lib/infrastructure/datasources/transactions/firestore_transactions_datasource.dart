@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:super_cripto_app/config/constants/environment.dart';
@@ -80,19 +78,18 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
       required String origin,
       required String destination}) async {
     final data = ScAddTransaction(
-        sctOrigin: origin,
-        sctDestination: destination,
-        sctAmount: amount,
-        sctType: transactionType.value,
-        sctAccId: accountId).toJson();
+            sctOrigin: origin,
+            sctDestination: destination,
+            sctAmount: amount,
+            sctType: transactionType.value,
+            sctAccId: accountId)
+        .toJson();
 
     return dio
-        .post<void>('/add-transaction', data: data, options: Options(contentType: Headers.jsonContentType))
+        .post<void>('/add-transaction',
+            data: data, options: Options(contentType: Headers.jsonContentType))
         .then(
           (_) {},
-        )
-        .catchError((err) {
-      print(err);
-    });
+        );
   }
 }

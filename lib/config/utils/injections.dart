@@ -29,6 +29,7 @@ _initCommon() {
       WithdrawUseCase(transactionsRepository: sl<TransactionsRepository>()));
 }
 
+// ignore: unused_element
 _initMockTransactionsInjections() {
   sl.registerSingleton<TransactionsDatasource>(MockTransactionsDatasource());
   sl.registerSingleton<TransactionsRepository>(

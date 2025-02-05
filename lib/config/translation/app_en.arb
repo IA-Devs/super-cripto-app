@@ -24,6 +24,16 @@
 
     "deposit_title": "New deposit",
 
+    "select_amount_view_cbu_hint": "Enter CBU / Alias",
+
+    "select_amount_view_cbu_label": "CBU / Alias",
+
+    "select_amount_view_amount_hint": "Enter amount (USD)",
+
+    "select_amount_view_amount_label": "Amount (USD)",
+
+    "select_amount_view_submit_label": "Continue",
+
     "@home_title": {
         "description": "Home screen messages"
     },
@@ -77,6 +87,26 @@
     },
 
     "@deposit_title": {
+        "description": "Title of page"
+    },
+
+    "@select_amount_view_cbu_hint": {
+        "description": "Title of page"
+    },
+
+    "@select_amount_view_cbu_label": {
+        "description": "Title of page"
+    },
+
+    "@select_amount_view_amount_hint": {
+        "description": "Title of page"
+    },
+
+    "@select_amount_view_amount_label": {
+        "description": "Title of page"
+    },
+
+    "@select_amount_view_submit_label": {
         "description": "Title of page"
     }
 }

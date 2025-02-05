@@ -47,9 +47,6 @@ class MainApp extends StatelessWidget {
     FlutterLoadingOverlay().init(
       navigatorKey: navigatorKey,
       customChild: GestureDetector(
-        onTap: () => print('Overlay tapped!'),
-        onDoubleTap: () => print('Overlay double-tapped!'),
-        onLongPress: () => print('Overlay long-pressed!'),
         child: const CircularProgressIndicator(),
       ),
     );
