@@ -110,10 +110,10 @@ class _SelectAmountViewState extends State<SelectAmountView> {
 
               startLoading;
               await transferCubit.onSubmit(
-                  accountId: selectedAccountCubit.state.account.id,
+                  accountId: selectedAccountCubit.state.account!.id,
                   amount: double.parse(amount.value),
                   destination: cbu.value,
-                  origin: selectedAccountCubit.state.account.accountAlias);
+                  origin: selectedAccountCubit.state.account!.accountAlias);
 
               if (context.mounted) context.go('/');
             },

@@ -29,6 +29,10 @@ class _DepositView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: BlocBuilder<SelectedAccountCubit, SelectedAccountState>(
             builder: (context, state) {
+              if (state.account == null) {
+                return const CircularProgressIndicator();
+              }
+
               return Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,14 +40,14 @@ class _DepositView extends StatelessWidget {
                 children: [
                   SharedTextField(
                     label: 'Account info',
-                    value: state.account.accountNumber,
+                    value: state.account!.accountNumber,
                   ),
                   SharedTextField(
                       label: 'Account beneficiary',
                       value:
-                          '${state.account.lastname} ${state.account.firstname}'),
+                          '${state.account!.lastname} ${state.account!.firstname}'),
                   SharedTextField(
-                      label: 'Bank Name', value: state.account.bankName)
+                      label: 'Bank Name', value: state.account!.bankName)
                 ],
               );
             },

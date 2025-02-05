@@ -6,15 +6,7 @@ part 'selected_account_state.dart';
 
 class SelectedAccountCubit extends Cubit<SelectedAccountState> {
   SelectedAccountCubit()
-      : super(SelectedAccountState(AccountInfo(
-            balance: 0.0,
-            id: '',
-            firstname: '',
-            lastname: '',
-            userId: '',
-            accountNumber: '',
-            accountAlias: '',
-            bankName: '')));
+      : super(const SelectedAccountState(null));
 
   void selectAccount(AccountInfo account) {
     emit(state.copyWith(account: account));

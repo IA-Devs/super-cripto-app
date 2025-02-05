@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:super_cripto_app/config/constants/environment.dart';
@@ -85,7 +87,7 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
         sctAccId: accountId).toJson();
 
     return dio
-        .post<void>('/add-transaction', data: data)
+        .post<void>('/add-transaction', data: data, options: Options(contentType: Headers.jsonContentType))
         .then(
           (_) {},
         )

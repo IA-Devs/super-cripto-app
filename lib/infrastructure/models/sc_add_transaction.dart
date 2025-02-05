@@ -10,7 +10,8 @@ class ScAddTransaction {
       required this.sctDestination,
       required this.sctAmount,
       required this.sctType,
-      required this.sctAccId});
+      required this.sctAccId})
+      : assert(sctOrigin.isNotEmpty, 'sc_origin field should not be empty');
 
   Map<String, dynamic> toJson() => {
         'sc_acc_id': sctAccId,
