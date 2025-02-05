@@ -36,7 +36,7 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
       if (lastTransaction == null) {
         final snapshot = await transactionsCollectionsRef
             .where('sct_acc_id', isEqualTo: userId.toString())
-            .orderBy('sct_id', descending: true)
+            .orderBy('sct_created_at', descending: true)
             .limit(limit)
             .get();
 
@@ -52,7 +52,7 @@ class FirestoreTransactionsDatasource extends TransactionsDatasource {
 
       final snapshot = await transactionsCollectionsRef
           .where('sct_acc_id', isEqualTo: userId)
-          .orderBy('sct_id', descending: true)
+          .orderBy('sct_created_at', descending: true)
           .startAfter([lastTransaction.id])
           .limit(limit)
           .get();
